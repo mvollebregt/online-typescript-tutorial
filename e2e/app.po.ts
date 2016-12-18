@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TutorialPage {
+export class OnlineTypeScriptTutorialPage {
   navigateTo() {
     return browser.get('/');
   }

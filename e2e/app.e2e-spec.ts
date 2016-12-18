@@ -1,10 +1,10 @@
-import { TutorialPage } from './app.po';
+import { OnlineTypeScriptTutorialPage } from './app.po';
 
-describe('tutorial App', function() {
-  let page: TutorialPage;
+describe('OnlineTypeScriptTutorial App', function() {
+  let page: OnlineTypeScriptTutorialPage;
 
   beforeEach(() => {
-    page = new TutorialPage();
+    page = new OnlineTypeScriptTutorialPage();
   });
 
   it('should display message saying app works', () => {
