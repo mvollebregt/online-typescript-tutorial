@@ -1,12 +1,32 @@
 var describes = [];
 var its;
+var expectations = [];
 
 function describe(describeTekst, describeFunc) {
   describes.push([describeTekst, describeFunc]);
 }
 
 function it(itTekst, itFunc) {
-  its.push([itTekst, itFunc]);
+  its.push([itTekst, function () {
+    var i;
+    expectations = [];
+    itFunc();
+    for (i = 0; i < expectations.length; i++) {
+      expectations[i]();
+    }
+  }]);
+}
+
+function expect(observed) {
+  return {
+    toBe: function(expected) {
+      expectations.push(function() {
+        if (observed !== expected) {
+          throw new Error('Waarde ' + observed + ' is niet gelijk aan verwachte waarde ' + expected);
+        }
+      });
+    }
+  }
 }
 
 window.buildTestSuite = function() {

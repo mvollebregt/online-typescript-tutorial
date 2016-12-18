@@ -17,6 +17,7 @@ export class TestRunnerService {
         try {
           it[1]();
         } catch (e) {
+          console.log(e);
           return {hoofdtekst: description[0], subtekst: it[0]};
         }
       }
