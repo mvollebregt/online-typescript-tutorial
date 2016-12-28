@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
 
   run() : void {
     let result = this.testRunner.test(this.source);
-    this.opdracht = result;
+    if (result) {
+      this.opdracht = result;
+    }
   }
 }

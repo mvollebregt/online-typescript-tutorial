@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import JsApiReporter = jasmine.JsApiReporter;
-import Jasmine = jasmine.Jasmine;
 import {register} from "./transpiler";
 import './mini-jasmine';
 import {Http} from "@angular/http";
@@ -11,7 +9,6 @@ import {testGroups, runTests, clearTests} from "./mini-jasmine";
 @Injectable()
 export class TestRunner {
 
-  testSuite: [string, [string, () => void][]][];
   testcode: string;
 
   constructor(http: Http) {
@@ -22,8 +19,12 @@ export class TestRunner {
   }
 
   test(source: string): Opdracht {
-    register('./opdracht', source);
-    return this.run();
+    try {
+      register('./opdracht', source);
+      return this.run();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   run(): Opdracht {
@@ -33,6 +34,7 @@ export class TestRunner {
     for (let testGroup of testGroups) {
       for (let testCase of testGroup.testCases) {
         if (testCase.failures.length > 0) {
+          console.log(testCase.failures);
           return {hoofdtekst: testGroup.title, subtekst: testCase.title};
         }
       }
