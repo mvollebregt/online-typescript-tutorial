@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {TestRunnerService} from "./test-runner/test-runner.service";
+import {TestRunner} from "./test-runner/test-runner";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import {TestRunnerService} from "./test-runner/test-runner.service";
     FormsModule,
     HttpModule
   ],
-  providers: [TestRunnerService],
+  providers: [TestRunner],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

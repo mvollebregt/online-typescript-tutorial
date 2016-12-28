@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TestRunnerService} from "./test-runner/test-runner.service";
+import {TestRunner} from "./test-runner/test-runner";
 import {Opdracht} from "./test-runner/opdracht";
 
 @Component({
@@ -9,11 +9,17 @@ import {Opdracht} from "./test-runner/opdracht";
 })
 export class AppComponent implements OnInit {
 
-  opdracht : Opdracht;
+  opdracht: Opdracht;
+  source: string = '';
 
-  constructor(private testRunnerService: TestRunnerService) {}
+  constructor(private testRunner: TestRunner) {}
 
   ngOnInit(): void {
-    this.opdracht = this.testRunnerService.run();
+    this.run();
+  }
+
+  run() : void {
+    let result = this.testRunner.test(this.source);
+    this.opdracht = result;
   }
 }

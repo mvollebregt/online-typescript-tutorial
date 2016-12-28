@@ -9,8 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        "app/test-runner/test-runner.js"
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
